@@ -13,7 +13,7 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><NavLink to="/" exact>Home</NavLink></li>
+                            <li><NavLink to="/posts" exact>Posts</NavLink></li>
                             {/*<li><Link to="/new-post">New Post</Link></li>*/}
                             <li><NavLink to={{
                                 pathname: '/new-post',
@@ -24,16 +24,14 @@ class Blog extends Component {
                     </nav>
                 </header>
 
-                <Route path="/" exact component={Posts}/>
-                {/*<Route path="/" exact render={()=><Posts/>}/>*/}
+
                 {/*switch stopt bij 1 match*/}
                 <Switch>
                     <Route path="/new-post" component={NewPost}/>
-                    <Route path="/:postId" exact component={FullPost}/>
+                    {/*<Route path="/:postId" exact component={FullPost}/>*/}
+                    <Route path="/posts"  component={Posts}/>
+                    {/*<Route path="/" exact render={()=><Posts/>}/>*/}
                 </Switch>
-                {/*<section>*/}
-                {/*    <FullPost id={this.state.selectedPostId}/>*/}
-                {/*</section>*/}
             </div>
         );
     }
