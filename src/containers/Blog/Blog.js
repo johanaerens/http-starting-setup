@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 // import axios from 'axios';
 import Posts from './Posts/Posts'
 import './Blog.css';
-import {Route,NavLink} from "react-router-dom";
+import {Route, NavLink, Switch} from "react-router-dom";
 import NewPost from "./NewPost/NewPost";
+import FullPost from "./FullPost/FullPost";
 
 class Blog extends Component {
     render() {
@@ -15,16 +16,21 @@ class Blog extends Component {
                             <li><NavLink to="/" exact>Home</NavLink></li>
                             {/*<li><Link to="/new-post">New Post</Link></li>*/}
                             <li><NavLink to={{
-                                pathname:'/new-post',
+                                pathname: '/new-post',
                                 hash: '#submit',
-                                search:'?quick-submit=true'
+                                search: '?quick-submit=true'
                             }}>New Post</NavLink></li>
                         </ul>
                     </nav>
                 </header>
-                {/*<Route path="/" exact render={()=><Posts/>}/>*/}
+
                 <Route path="/" exact component={Posts}/>
-                <Route path="/new-post" component={NewPost}/>
+                {/*<Route path="/" exact render={()=><Posts/>}/>*/}
+                {/*switch stopt bij 1 match*/}
+                <Switch>
+                    <Route path="/new-post" component={NewPost}/>
+                    <Route path="/:postId" exact component={FullPost}/>
+                </Switch>
                 {/*<section>*/}
                 {/*    <FullPost id={this.state.selectedPostId}/>*/}
                 {/*</section>*/}
